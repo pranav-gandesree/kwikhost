@@ -17,6 +17,7 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({children}) => {
         setIsLoading(true)
         signIn("google", {callbackUrl: 'http://localhost:3000/manage'})
       } catch (error) {
+        console.log(error)
         setIsLoading(false)
       }finally{
         setIsLoading(false)

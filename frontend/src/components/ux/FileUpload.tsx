@@ -85,6 +85,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       onFileUpload?.(selectedFile);
     } catch (error) {
       setUploadStatus('error');
+      console.log(error)
       toast.error('Failed to upload file.');
     }
   };

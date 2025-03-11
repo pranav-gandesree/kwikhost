@@ -1,9 +1,11 @@
+
 import { NextAuthOptions } from "next-auth"
 import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import { db } from "../db/drizzle"
 import { user, account, session, verificationToken } from "@/db/schema"
 import Google from "next-auth/providers/google"
-
+import { JWT } from "next-auth/jwt"
+import { Session } from "next-auth"
 
 export const authOptions: NextAuthOptions = {
   adapter: DrizzleAdapter(db, {
@@ -34,16 +36,13 @@ export const authOptions: NextAuthOptions = {
       }
       return token
     },
-    session: async ({ session, token }: any) => {
-      if (session) {
-        session.user.id = token.id
-        session.user.email = token.email
-        session.user.name = token.name
+    async session({ session, token }: { session: Session; token: JWT }) {
+      if (session?.user) {
+        session.user.id = token.id as string
+        session.user.email = token.email ?? ''
+        session.user.name = token.name ?? ''
       }
       return session
     },
-    // async redirect({ url, baseUrl }) {
-    //   return url.startsWith(baseUrl) ? url : baseUrl
-    // },
   }
 }

@@ -226,8 +226,7 @@ export default function LandingPage() {
                 you need
               </h2>
               <p className="text-zinc-400 mb-8">
-                NanoHost supports all the file types you need to share with the world. From documents to images, we've
-                got you covered.
+              NanoHost supports all the file types you need to share with the world. From documents to images, we&apos;ve got you covered.  
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center gap-3 p-3 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl">
@@ -387,7 +386,7 @@ export default function LandingPage() {
               </span>{" "}
               pricing
             </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto">Choose the plan that's right for you.</p>
+            <p className="text-zinc-400 max-w-2xl mx-auto"> Choose the plan that&apos;s right for you.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

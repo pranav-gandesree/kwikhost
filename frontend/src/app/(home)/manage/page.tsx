@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+const ManagePage = () => {
   const router = useRouter();
   const { status, data: session } = useSession();
   
@@ -32,4 +32,4 @@ const page = () => {
   )
 }
 
-export default page
+export default ManagePage
