@@ -14,7 +14,31 @@ import {
     emailVerified: timestamp("emailVerified", { mode: "date" }),
     image: text("image"),
   })
-  
+
+export const domain = pgTable("domain", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  domain: text("domainName").notNull().unique(), // make domain globally unique
+  userId: text("userId")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
+  updatedAt: timestamp("updatedAt", { mode: "date" }).notNull(),
+});
+
+
+export const file = pgTable("file", {
+  id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
+  domainId: text("domainId")
+    .notNull()
+    .references(() => domain.id, { onDelete: "cascade" }),
+  file_url: text("file_url").notNull(),
+  file_type: text("file_type").notNull(), // e.g., 'image', 'video', 'pdf'
+  createdAt: timestamp("createdAt", { mode: "date" }).notNull(),
+  updatedAt: timestamp("updatedAt", { mode: "date" }).notNull(),
+});
+
+
+
   export const account = pgTable(
     "account",
     {
