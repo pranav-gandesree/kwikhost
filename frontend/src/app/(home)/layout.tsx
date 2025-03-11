@@ -1,3 +1,4 @@
+import HomeNavbar from "@/components/ux/HomeNavbar";
 
 
 export default function HomeLayout({
@@ -7,10 +8,10 @@ export default function HomeLayout({
 }) {
   return (
     <div className="flex flex-col min-h-screen w-full">
-    <div> home layout</div>
+      
+      <HomeNavbar/>
 
-      <div className="flex-grow pt-20 flex">
-        {/* <Sidebar /> */}
+      <div className="flex-grow flex">
         <main className="flex-grow p-6">{children}</main>
       </div>
     </div>
