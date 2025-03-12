@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1741694116249,
+      "tag": "0000_add-user-table",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1741701337825,
+      "tag": "0001_add-domain-table",
+      "breakpoints": true
+    }
+  ]
+}
