@@ -2,7 +2,7 @@
 import { NextAuthOptions } from "next-auth"
 import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import { db } from "../db/drizzle"
-import { user, account, session, verificationToken } from "@/db/schema"
+import { user, account, session, verificationToken, domain, file } from "@/db/schema"
 import Google from "next-auth/providers/google"
 import { JWT } from "next-auth/jwt"
 import { Session } from "next-auth"

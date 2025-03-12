@@ -6,7 +6,7 @@ import { Upload, X } from 'lucide-react';
 import { toast } from 'sonner';
 
 interface FileUploadProps {
-  onFileUpload?: (file: File) => void;
+  onFileUpload?: (file: File, subdomain: string) => void;
 }
 
 export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
@@ -82,7 +82,8 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       await new Promise((resolve) => setTimeout(resolve, 1500));
      
       toast.success('File uploaded successfully!');
-      onFileUpload?.(selectedFile);
+      onFileUpload?.(selectedFile, subdomain);
+      setUploadStatus('success');
     } catch (error) {
       setUploadStatus('error');
       console.log(error)
@@ -102,7 +103,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
           className="w-full bg-gray-800 text-white px-4 py-2 rounded-l-lg outline-none"
         />
         <span className="bg-gray-700 text-white px-4 py-2 rounded-r-lg select-none">
-          .nanohost.site
+          .kwikhost.xyz
         </span>
       </div>
 
@@ -173,16 +174,17 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
 
       {/* Publish Button */}
       <button
-        onClick={handlePublish}
-        disabled={!fileName || uploadStatus === 'uploading' || uploadStatus === 'success'}
-        className={`w-full mt-6 px-4 py-3 text-white font-medium rounded-lg transition ${
-          !fileName || uploadStatus === 'uploading' || uploadStatus === 'success'
-            ? 'bg-gray-700 cursor-not-allowed'
-            : 'bg-blue-600 hover:bg-blue-700'
-        }`}
-      >
-        {uploadStatus === 'uploading' ? 'Publishing...' : 'PUBLISH'}
-      </button>
+          onClick={handlePublish}
+          disabled={!fileName || uploadStatus === 'uploading'}
+          className={`w-full mt-6 px-4 py-3 text-white font-medium rounded-lg transition ${
+            !fileName || uploadStatus === 'uploading'
+              ? 'bg-gray-700 cursor-not-allowed'
+              : 'bg-blue-600 hover:bg-blue-700'
+          }`}
+        >
+          {uploadStatus === 'uploading' ? 'Publishing...' : 'PUBLISH'}
+        </button>
+
     </div>
   );
 };
