@@ -54,7 +54,7 @@ export default function LandingPage() {
           <div className="lg:pr-12">
             <div className="inline-block mb-4 px-4 py-1 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full">
               <span className="text-sm font-medium bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Introducing NanoHost
+                Introducing kwikhost
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
@@ -73,7 +73,8 @@ export default function LandingPage() {
                 See how it works
               </Button>
             </div>
-            <div className="mt-8 flex items-center gap-4">
+
+            {/* <div className="mt-8 flex items-center gap-4">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
@@ -85,9 +86,10 @@ export default function LandingPage() {
                 ))}
               </div>
               <p className="text-sm text-zinc-400">
-                <span className="font-medium text-white">2,500+</span> creators trust NanoHost
+                <span className="font-medium text-white">2,500+</span> creators trust kwikhost
               </p>
-            </div>
+            </div> */}
+
           </div>
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl transform -rotate-3"></div>
@@ -98,7 +100,7 @@ export default function LandingPage() {
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                <div className="px-3 py-1 bg-zinc-800 rounded-full text-xs">your-site.nanohost.xyz</div>
+                <div className="px-3 py-1 bg-zinc-800 rounded-full text-xs">your-site.kwikhost.xyz</div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-4 p-3 bg-zinc-800/50 rounded-lg">
@@ -226,7 +228,7 @@ export default function LandingPage() {
                 you need
               </h2>
               <p className="text-zinc-400 mb-8">
-              NanoHost supports all the file types you need to share with the world. From documents to images, we&apos;ve got you covered.  
+              kwikhost supports all the file types you need to share with the world. From documents to images, we&apos;ve got you covered.  
               </p>
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center gap-3 p-3 bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-xl">
@@ -306,7 +308,7 @@ export default function LandingPage() {
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
                   <h3 className="text-2xl font-bold mb-4">Create your space</h3>
                   <p className="text-zinc-400">
-                    Sign up and choose your custom subdomain (you.nanohost.xyz) in just a few seconds.
+                    Sign up and choose your custom subdomain (you.kwikhost.xyz) in just a few seconds.
                   </p>
                 </div>
                 <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-xl font-bold mb-8 md:mb-0">
@@ -614,9 +616,9 @@ export default function LandingPage() {
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-3xl blur-xl"></div>
             <div className="relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to get started with NanoHost?</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to get started with kwikhost?</h2>
               <p className="text-zinc-300 mb-8 max-w-2xl mx-auto">
-                Join thousands of creators who trust NanoHost for their file hosting needs. Get your own corner of the
+                Join thousands of creators who trust kwikhost for their file hosting needs. Get your own corner of the
                 web today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -644,7 +646,7 @@ export default function LandingPage() {
                     <Upload className="w-4 h-4 text-white" />
                   </div>
                 </div>
-                <span className="font-bold text-xl tracking-tight">nanohost</span>
+                <span className="font-bold text-xl tracking-tight">kwikhost</span>
               </div>
               <p className="text-zinc-400 text-sm">
                 Simple file hosting with custom domains. Upload, share, and manage your files with ease.
@@ -752,7 +754,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="mt-12 pt-6 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-zinc-400">© {new Date().getFullYear()} NanoHost. All rights reserved.</p>
+            <p className="text-sm text-zinc-400">© {new Date().getFullYear()} kwikhost. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="text-zinc-400 hover:text-white transition-colors">
                 <svg

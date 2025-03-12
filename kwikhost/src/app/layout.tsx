@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Nanohost",
-  description: "Host your static site with Nanohost",
+  title: "kwikhost",
+  description: "Host your static site with kwikhost",
 };
 
 export default function RootLayout({

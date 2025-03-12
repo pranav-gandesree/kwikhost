@@ -14,7 +14,7 @@ const HomeNavbar = () => {
   return (
     <div className="flex justify-between items-center border-b shadow-md px-6 py-4 m-4">
       
-      <h2 className="text-3xl font-semibold text-gray-200 cursor-pointer">NanoHost</h2>
+      <h2 className="text-3xl font-semibold text-gray-200 cursor-pointer">kwikhost</h2>
      
       <ul className="flex flex-row gap-6 items-center text-lg text-gray-300">
         <li className="cursor-pointer">Free Plan</li>
