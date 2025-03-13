@@ -35,7 +35,9 @@ const MySpace = () => {
       });
 
       console.log("File uploaded successfully");
-    } catch (error: any) {
+    }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     catch (error: any) {
       console.error("File upload failed:", error.response?.data || error.message);
     }
   };

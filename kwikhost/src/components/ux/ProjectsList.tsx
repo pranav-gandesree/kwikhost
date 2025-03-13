@@ -22,6 +22,7 @@ export default function ProjectsList({ userId }: { userId: string }) {
         console.log(result);
 
         // Convert updatedAt and modifiedAt to readable strings
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const formattedResult = result.map((domain: any) => ({
           ...domain,
           updatedAt: new Date(domain.updatedAt).toLocaleString(),
