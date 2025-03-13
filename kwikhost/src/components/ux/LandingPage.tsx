@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button"
 import { FileText, ImageIcon, FileIcon, Upload, Globe, Share2 } from "lucide-react"
-import GoogleSignInButton from "./GoogleSigninButton"
+import Link from "next/link"
 
 export default function LandingPage() {
   return (
@@ -40,11 +40,12 @@ export default function LandingPage() {
         </div> */}
         <div className="flex items-center gap-4">
 
-            <GoogleSignInButton>
               <div className="w-full">
+                <Link href="/login">
                   Sign in with Google
+                </Link>
               </div>
-            </GoogleSignInButton>
+            
 
 
         </div>
