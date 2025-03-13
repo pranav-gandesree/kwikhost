@@ -12,3 +12,13 @@ export async function GetDomains(userId: string) {
 
   return domains;
 }
+
+
+export async function GetDomainByName(domainName: string) {
+  const domains = await db
+    .select() 
+    .from(domain)
+    .where(eq(domain.domain, domainName));
+
+  return domains;
+}

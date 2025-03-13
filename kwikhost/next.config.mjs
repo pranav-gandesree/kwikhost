@@ -9,6 +9,14 @@ const nextConfig = {
       },
     ],
   },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/:subdomain*',
+  //       destination: '/subdomain', 
+  //     },
+  //   ];
+  // },
 };
 
 export default nextConfig;

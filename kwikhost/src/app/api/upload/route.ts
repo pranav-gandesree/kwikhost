@@ -48,7 +48,7 @@ export async function POST(req: Request) {
     // Save file metadata to the database
     await db.insert(file).values({
       domainId,
-      file_url: `kwikhost-files/${fileKey}`,
+      file_url: `${fileKey}`,
       file_type: fileType,
       createdAt: new Date(),
       updatedAt: new Date(),

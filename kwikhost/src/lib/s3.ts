@@ -10,3 +10,14 @@ export const s3Client = new S3Client({
 });
 
 export const BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME!;
+
+
+export function handleS3Error(error: unknown): Error {
+  console.error("S3 error:", error);
+  
+  if (error instanceof Error) {
+    return error;
+  }
+  
+  return new Error("Unknown S3 error occurred");
+}

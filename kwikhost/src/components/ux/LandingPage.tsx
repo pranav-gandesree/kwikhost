@@ -22,7 +22,7 @@ export default function LandingPage() {
               <Upload className="w-4 h-4 text-white" />
             </div>
           </div>
-          <span className="font-bold text-xl tracking-tight">kwkikhost</span>
+          <span className="font-bold text-xl tracking-tight">kwikhost</span>
         </div>
         {/* <div className="hidden md:flex items-center gap-8">
           <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
