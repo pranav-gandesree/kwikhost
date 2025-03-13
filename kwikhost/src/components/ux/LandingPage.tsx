@@ -263,13 +263,13 @@ export default function LandingPage() {
             <div className="md:w-1/2 relative">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl"></div>
               <div className="relative">
-                <Image
+                {/* <Image
                   src="/placeholder.svg?height=400&width=500"
                   width={500}
                   height={400}
                   alt="File types showcase"
                   className="rounded-3xl border border-zinc-800 shadow-2xl"
-                />
+                /> */}
                 <div className="absolute -bottom-6 -right-6 bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-2xl p-4 shadow-xl">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">

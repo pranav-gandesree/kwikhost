@@ -20,6 +20,7 @@ export default function ProjectsList({ userId }: { userId: string }) {
       try {
         const result = await GetDomains(userId);
         console.log(result);
+      
 
         // Convert updatedAt and modifiedAt to readable strings
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,6 +31,7 @@ export default function ProjectsList({ userId }: { userId: string }) {
         }));
 
         setDomains(formattedResult);
+        console.log(domains);
       } catch (error) {
         console.error("Failed to fetch domains:", error);
       }

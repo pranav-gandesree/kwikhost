@@ -186,6 +186,8 @@ export function FileS3({ fileKey, fileType }: { fileKey: string, fileType?: stri
             alt="File preview" 
             className="max-w-full h-auto object-contain"
             style={{ maxHeight: '300px' }}
+            width={500} 
+            height={300} 
           />
         </div>
       )}

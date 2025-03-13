@@ -20,7 +20,7 @@ const MySpace = () => {
 
   const handleFileUpload = async (file: File, subdomain: string) => {
     try {
-      subdomain += ".kwikhost.app";
+      subdomain += ".kwikhost.xyz";
 
       const response = await axios.post("/api/upload", {
         userId: session.user.id,
