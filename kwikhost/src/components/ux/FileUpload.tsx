@@ -4,6 +4,7 @@ import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { Upload, X } from 'lucide-react';
 import { toast } from 'sonner';
+import Image from 'next/image';
 
 interface FileUploadProps {
   onFileUpload?: (file: File, subdomain: string) => void;
@@ -158,7 +159,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         {/* Preview */}
         {preview && uploadStatus !== 'success' && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/90 rounded-xl animate-fade-in">
-            <img src={preview} alt="Preview" className="max-h-[80%] max-w-[80%] object-contain rounded" />
+            <Image src={preview} alt="Preview" className="max-h-[80%] max-w-[80%] object-contain rounded" />
             <button
               onClick={(e) => {
                 e.stopPropagation();

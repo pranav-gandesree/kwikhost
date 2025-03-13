@@ -2,7 +2,6 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { FileText, ImageIcon, FileIcon, Upload, Globe, Share2 } from "lucide-react"
-import Link from "next/link"
 import GoogleSignInButton from "./GoogleSigninButton"
 
 export default function LandingPage() {

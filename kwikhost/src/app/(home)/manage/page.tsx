@@ -14,7 +14,7 @@ const ManagePage = () => {
     if (status === 'unauthenticated') {
       router.push('/');
     }
-  }, [status, router]);
+  }, [status, session]);
 
 
    if (status === 'loading') {
