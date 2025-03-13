@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db/drizzle";
-import { domain, file } from "@/db/schema";
+import { file } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function GetFiles(domainId: string) {

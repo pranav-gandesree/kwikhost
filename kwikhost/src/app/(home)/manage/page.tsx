@@ -1,6 +1,5 @@
 'use client'
 
-import ProjectsList from '@/components/ux/MySpace'
 import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
