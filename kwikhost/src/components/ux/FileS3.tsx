@@ -103,6 +103,7 @@
 
 'use client'
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export function FileS3({ fileKey, fileType }: { fileKey: string, fileType?: string }) {
@@ -180,7 +181,7 @@ export function FileS3({ fileKey, fileType }: { fileKey: string, fileType?: stri
     <div className="flex flex-col items-center gap-4 mt-4">
       {isImage && (
         <div className="border border-gray-200 rounded-lg overflow-hidden shadow-md max-w-md">
-          <img 
+          <Image 
             src={fileUrl} 
             alt="File preview" 
             className="max-w-full h-auto object-contain"

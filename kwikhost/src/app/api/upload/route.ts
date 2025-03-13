@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     const presignedUrl = await generateUploadUrl(fileKey, fileType);
 
     // Check if the domain already exists
-    let domainRecord = await db
+    const domainRecord = await db
       .select({
         domainId: domain.id,
       })
@@ -55,7 +55,9 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ presignedUrl });
-  } catch (error: any) {
+  }
+   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+   catch (error: any) {
     console.error(error);
     return NextResponse.json(
       { error: "Failed to generate upload URL" },
