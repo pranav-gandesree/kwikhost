@@ -2,6 +2,8 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { FileText, ImageIcon, FileIcon, Upload, Globe, Share2 } from "lucide-react"
+import Link from "next/link"
+import GoogleSignInButton from "./GoogleSigninButton"
 
 export default function LandingPage() {
   return (
@@ -39,12 +41,14 @@ export default function LandingPage() {
           </Link>
         </div> */}
         <div className="flex items-center gap-4">
-          {/* <Link href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
-            Sign in
-          </Link> */}
-          <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0">
-            Sign in
-          </Button>
+
+            <GoogleSignInButton>
+              <div className="w-full">
+                  Sign in with Google
+              </div>
+            </GoogleSignInButton>
+
+
         </div>
       </nav>
 
