@@ -15,7 +15,8 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({children}) => {
     const loginWithGoogle = async () =>{
       try {
         setIsLoading(true)
-        signIn("google", {callbackUrl: 'http://localhost:3000/manage'})
+        // signIn("google", {callbackUrl: 'http://localhost:3000/manage'})
+        signIn("google", {callbackUrl: process.env.NEXT_PUBLIC_PRODUCTION_URL})
       } catch (error) {
         console.log(error)
         setIsLoading(false)
@@ -28,7 +29,7 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({children}) => {
     //  className="w-full"
 
     className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300"
-    
+
       onClick={loginWithGoogle}>
       {isLoading && (
        <svg
