@@ -7,12 +7,11 @@ export default function HomeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <div className="flex flex-col h-screen w-full">
       
       <HomeNavbar/>
-
-      <div className="flex-grow flex">
-        <main className="flex-grow p-6">{children}</main>
+      <div>
+        <main className=" p-6">{children}</main>
       </div>
     </div>
   );

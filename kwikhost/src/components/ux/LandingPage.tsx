@@ -24,7 +24,7 @@ export default function LandingPage() {
           </div>
           <span className="font-bold text-xl tracking-tight">kwkikhost</span>
         </div>
-        <div className="hidden md:flex items-center gap-8">
+        {/* <div className="hidden md:flex items-center gap-8">
           <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
             Features
           </Link>
@@ -37,13 +37,13 @@ export default function LandingPage() {
           <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
             Blog
           </Link>
-        </div>
+        </div> */}
         <div className="flex items-center gap-4">
-          <Link href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
+          {/* <Link href="#" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
             Sign in
-          </Link>
+          </Link> */}
           <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0">
-            Get Started
+            Sign in
           </Button>
         </div>
       </nav>
@@ -69,9 +69,9 @@ export default function LandingPage() {
               <Button className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0 h-12 px-8 rounded-xl">
                 Start for free
               </Button>
-              <Button variant="outline" className="border-zinc-700 text-white hover:bg-zinc-800 h-12 px-8 rounded-xl">
+              {/* <Button variant="outline" className="border-zinc-700 text-white hover:bg-zinc-800 h-12 px-8 rounded-xl">
                 See how it works
-              </Button>
+              </Button> */}
             </div>
 
             {/* <div className="mt-8 flex items-center gap-4">
@@ -285,7 +285,7 @@ export default function LandingPage() {
       </section>
 
       {/* How It Works - Timeline Style */}
-      <section className="relative z-10 py-24">
+      {/* <section className="relative z-10 py-24">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-pink-900/10 transform skew-y-6"></div>
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -299,11 +299,11 @@ export default function LandingPage() {
           </div>
 
           <div className="relative">
-            {/* Timeline Line */}
+            
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 hidden md:block"></div>
 
             <div className="space-y-24 relative">
-              {/* Step 1 */}
+              
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
                   <h3 className="text-2xl font-bold mb-4">Create your space</h3>
@@ -327,7 +327,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              {/* Step 2 */}
+              
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 order-2 md:order-1">
                   <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-4 shadow-xl">
@@ -351,7 +351,7 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              {/* Step 3 */}
+             
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
                   <h3 className="text-2xl font-bold mb-4">Share with the world</h3>
@@ -375,10 +375,10 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Pricing Section - Creative Cards */}
-      <section className="relative z-10 py-24 px-6">
+      {/* <section className="relative z-10 py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
@@ -392,7 +392,7 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Free Plan */}
+            
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 transition-all duration-300 group-hover:border-purple-500/50 group-hover:transform group-hover:-translate-y-1">
@@ -456,7 +456,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Pro Plan */}
+            
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-3xl blur-xl"></div>
               <div className="relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-8 transform translate-y-0 transition-all duration-300 group-hover:transform group-hover:-translate-y-1">
@@ -532,7 +532,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Business Plan */}
+          
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 transition-all duration-300 group-hover:border-purple-500/50 group-hover:transform group-hover:-translate-y-1">
@@ -608,10 +608,10 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="relative z-10 py-24 px-6">
+      {/* <section className="relative z-10 py-24 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-3xl blur-xl"></div>
@@ -632,11 +632,12 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-zinc-800 py-12 px-6">
+      {/* <footer className="relative z-10 border-t border-zinc-800 py-12 px-6">
         <div className="max-w-7xl mx-auto">
+
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
@@ -753,6 +754,7 @@ export default function LandingPage() {
               </ul>
             </div>
           </div>
+
           <div className="mt-12 pt-6 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-zinc-400">© {new Date().getFullYear()} kwikhost. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
@@ -806,7 +808,7 @@ export default function LandingPage() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </div>
   )
 }

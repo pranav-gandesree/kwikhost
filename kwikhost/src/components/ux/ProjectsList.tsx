@@ -1,84 +1,79 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Button } from '../ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog';
-import { FileUpload } from './FileUpload';
-import axios from 'axios';
-import { useSession } from 'next-auth/react';
+import { useEffect, useState } from "react";
+import { GetDomains } from "@/actions/getProjects";
+import Link from "next/link";
+import { FileText, Globe } from "lucide-react";
+import { Button } from "../ui/button";
 
-const ProjectsList = () => {
-  const [open, setOpen] = useState(false);
-  const {data: session} = useSession();
-  
+interface Domain {
+  id: string;
+  domain: string;
+  updatedAt: string;
+}
 
-  // const handleFileUpload = async (file: File, subdomain: string) => {
+export default function ProjectsList({ userId }: { userId: string }) {
+  const [domains, setDomains] = useState<Domain[]>([]);
 
-  //   subdomain += '.kwikhost.app';
+  useEffect(() => {
+    const fetchDomains = async () => {
+      try {
+        const result = await GetDomains(userId);
+        console.log(result);
 
-  //   const response =await axios.post('/api/upload', {
-  //     userId: session?.user.id,
-  //     domainName: subdomain,  
-  //     fileType: file.type,  
-  //   });
+        // Convert updatedAt and modifiedAt to readable strings
+        const formattedResult = result.map((domain: any) => ({
+          ...domain,
+          updatedAt: new Date(domain.updatedAt).toLocaleString(),
+          modifiedAt: new Date(domain.modifiedAt).toLocaleString(),
+        }));
 
-  //   console.log('Uploaded file:', file, subdomain);
-  //   console.log('Uploaded subdomain:', response);
-  //   setOpen(false); 
-  // };
-
-
-
-
-  const handleFileUpload = async (file: File, subdomain: string) => {
-    try {
-      if (!session?.user?.id) {
-        console.error("User is not authenticated");
-        return;
+        setDomains(formattedResult);
+      } catch (error) {
+        console.error("Failed to fetch domains:", error);
       }
-  
-      subdomain += ".kwikhost.app";
-  
-      const response = await axios.post("/api/upload", {
-        userId: session.user.id,
-        domainName: subdomain,
-        fileType: file.type,
-      });
-  
-      console.log("Upload URL:", response.data.presignedUrl);
-  
-      // Now, you can upload the file to the presigned URL
-      await axios.put(response.data.presignedUrl, file, {
-        headers: {
-          "Content-Type": file.type,
-        },
-      });
-  
-      console.log("File uploaded successfully");
-    } catch (error: any) {
-      console.error("File upload failed:", error.response?.data || error.message);
-    }
-  };
+    };
 
+    fetchDomains();
+  }, [userId]);
 
-  
-  
   return (
-    <>
-      <div className='flex justify-between items-center border p-4 m-4 rounded-lg mt-10'>
-        <h2 className='text-2xl font-semibold'>Live Projects</h2>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button>Upload</Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-2xl p-4">
-            <FileUpload onFileUpload={handleFileUpload} />
-          </DialogContent>
-        </Dialog>
-        
-      </div>
-    </>
-  );
-};
+    <div className="space-y-4">
+      {domains.map((domain) => (
+        <div
+          key={domain.id}
+          className="flex items-center gap-4 p-3 bg-zinc-800/50 rounded-lg"
+        >
+          {/* Icon */}
+          <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+            <Globe className="w-5 h-5 text-white" />
+          </div>
 
-export default ProjectsList;
+          {/* Domain Info */}
+          <div >
+            <Link href={domain.domain} target="_blank">
+              <div className="text-sm font-medium text-white hover:underline">
+                {domain.domain}
+              </div>
+            </Link>
+           
+          </div>
+
+          <div className="text-xs text-zinc-400">Active • Custom Domain</div>
+            
+            <div className="text-xs text-zinc-400">
+              Modified: {domain?.updatedAt}
+            </div>
+
+
+          {/* Action Button */}
+          <div className="ml-auto">
+            <Button size="sm" variant="ghost" className="h-8 w-8 p-0 rounded-full">
+              <FileText className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
