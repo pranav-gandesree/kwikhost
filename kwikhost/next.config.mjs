@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+     
   images: {
-    
     remotePatterns: [
       {
         protocol: 'https',
@@ -19,6 +19,10 @@ const nextConfig = {
     {
       source: '/:subdomain*',
       destination: '/:subdomain*',
+    },
+    {
+      source: '/',
+      destination: '/api/tenant',
     },
   ],
 };

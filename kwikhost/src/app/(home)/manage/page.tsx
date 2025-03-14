@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import MySpace from '@/components/ux/MySpace';
+import Spinner from '@/components/ux/Spinner';
 
 const ManagePage = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const ManagePage = () => {
 
 
    if (status === 'loading') {
-    return <div>Loading...</div>;
+    return <Spinner/>
   }
 
 

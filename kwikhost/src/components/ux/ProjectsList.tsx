@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { GetDomains } from "@/actions/getProjects";
-import Link from "next/link";
-import { FileText, Globe } from "lucide-react";
-import { Button } from "../ui/button";
+import { useEffect, useState } from 'react';
+import { GetDomains } from '@/actions/getProjects';
+import Link from 'next/link';
+import { FileText, Globe } from 'lucide-react';
+import { Button } from '../ui/button';
+import { toast } from 'sonner';
 
 interface Domain {
   id: string;
@@ -19,64 +20,78 @@ export default function ProjectsList({ userId }: { userId: string }) {
     const fetchDomains = async () => {
       try {
         const result = await GetDomains(userId);
-        console.log(result);
-      
-
-        // Convert updatedAt and modifiedAt to readable strings
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const formattedResult = result.map((domain: any) => ({
           ...domain,
-          updatedAt: new Date(domain.updatedAt).toLocaleString(),
-          modifiedAt: new Date(domain.modifiedAt).toLocaleString(),
+          updatedAt: new Date(domain.updatedAt).toISOString().split('T')[0],
         }));
-
         setDomains(formattedResult);
-        console.log(domains);
       } catch (error) {
-        console.error("Failed to fetch domains:", error);
+        console.error('Failed to fetch domains:', error);
       }
     };
 
     fetchDomains();
   }, [userId]);
 
+  
+  const handleCopy = async (domain: string) => {
+    try {
+      const link = `https://${domain}.kwikhost.xyz`;
+      await navigator.clipboard.writeText(link);
+      toast.success('Link copied to clipboard', {
+        description: link,
+        duration: 3000,
+      });
+      
+    } catch (error) {
+      console.error('Failed to copy:', error);
+      toast.error('Failed to copy link', {
+        duration: 3000
+      });
+    }
+  };
+
   return (
     <div className="space-y-4">
       {domains.map((domain) => (
         <div
           key={domain.id}
-          className="flex items-center gap-4 p-3 bg-zinc-800/50 rounded-lg"
+          className="flex items-center gap-6 p-4 bg-zinc-900 border border-zinc-700 rounded-xl shadow-sm hover:shadow-md transition-all"
         >
-          {/* Icon */}
-          <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-            <Globe className="w-5 h-5 text-white" />
+          
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+            <Globe className="w-6 h-6 text-white" />
           </div>
 
-          {/* Domain Info */}
-          <div >
-            
-          <Link href={`https://${domain.domain}.localhost:3000`} target="_blank" rel="noopener noreferrer">
-            <span className="text-sm font-medium text-white hover:underline">
-              {domain.domain}.localhost:3000
-            </span>
-          </Link>
-
-           
+          
+          <div className="flex-1">
+            <Link
+              href={`https://${domain.domain}.kwikhost.xyz`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg font-semibold text-white hover:text-purple-400 transition-colors"
+            >
+              {domain.domain}.kwikhost.xyz
+            </Link>
+            <p className="text-sm text-zinc-400 mt-1">
+               Last Modified - {domain.updatedAt}
+            </p>
           </div>
 
-          <div className="text-xs text-zinc-400">Active • Custom Domain</div>
-            
-            <div className="text-xs text-zinc-400">
-              Modified: {domain?.updatedAt}
-            </div>
+          
+          <span className="text-sm text-green-400 bg-green-800/40 px-2 py-1 rounded-lg">
+            Active
+          </span>
 
-
-          {/* Action Button */}
-          <div className="ml-auto">
-            <Button size="sm" variant="ghost" className="h-8 w-8 p-0 rounded-full">
-              <FileText className="h-4 w-4" />
-            </Button>
-          </div>
+         
+          <Button
+            size="icon"
+            variant="ghost"
+            className="h-10 w-10 flex items-center justify-center rounded-full hover:bg-zinc-800 transition-colors"
+            onClick={() => handleCopy(domain.domain)}
+          >
+            <FileText className="h-5 w-5 text-zinc-400 hover:text-white" />
+          </Button>
         </div>
       ))}
     </div>

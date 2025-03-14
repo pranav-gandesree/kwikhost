@@ -9,7 +9,8 @@ export async function generateDownloadUrl(fileKey: string) {
       Key: `kwikhost-files/${fileKey}`,
     });
 
-    const signedUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 }); // 1 hour validity
+    const signedUrl = await getSignedUrl(s3Client, command, { expiresIn: 3600 }); 
+    // console.log("Generated signed URL:", signedUrl);
     return { url: signedUrl, error: null };
   } catch (error) {
     console.error("Error generating signed URL:", error);

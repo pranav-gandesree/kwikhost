@@ -1,9 +1,19 @@
+'use client'
 
 import { Button } from "@/components/ui/button"
 import { FileText, ImageIcon, FileIcon, Upload, Globe, Share2 } from "lucide-react"
 import Link from "next/link"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 export default function LandingPage() {
+  const {data:session} = useSession();
+  const router = useRouter();
+
+  if(session){
+    router.push('/manage');
+  }
+  
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-white overflow-hidden">
       {/* Floating Elements */}
@@ -31,12 +41,7 @@ export default function LandingPage() {
           <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
             Pricing
           </Link>
-          <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-            Docs
-          </Link>
-          <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-            Blog
-          </Link>
+          
         </div> */}
         <div className="flex items-center gap-4">
 

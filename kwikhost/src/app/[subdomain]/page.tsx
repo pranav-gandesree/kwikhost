@@ -7,6 +7,10 @@ import { FileS3 } from "@/components/ux/FileS3";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
+import { useParams } from 'next/navigation';
+import Loader from "@/components/ux/Loader";
+
+
 interface Domain {
   id: string;
   domain: string;
@@ -25,20 +29,20 @@ interface File {
 }
 
 
+export default function SubdomainPage() {
+  const { subdomain } = useParams() as { subdomain: string };
 
-export default function SubdomainPage({ params }: { params: { subdomain: string } }) {
-  const { subdomain } = params;
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [domainDetails, setDomainDetails] = useState<Domain[] | null>(null);
   const [fileDetails, setFileDetails] = useState<File[] | null>(null);
 
   const getDomain = async () => {
     try {
-      if (subdomain && session?.user?.id) {
+      if (subdomain) {
         const data = await GetDomainByName(subdomain);
         setDomainDetails(data);
         console.log('Subdomain in page.tsco', subdomain);
-        console.log('SubdomainPage: Fetched domain details:', data);
+        // console.log('SubdomainPage: Fetched domain details:', data);
       }
     } catch (error) { 
       console.error('Error fetching domain details:', error);
@@ -50,7 +54,7 @@ export default function SubdomainPage({ params }: { params: { subdomain: string 
       if (domainDetails?.[0]?.id) {        
         const data = await GetFiles(domainDetails[0].id);
         setFileDetails(data);
-        console.log("File URL:", fileDetails?.[0]?.file_url);
+        // console.log("File URL:", fileDetails?.[0]?.file_url);
         console.log('SubdomainPage: Fetched files:', data);
       }
     } catch (error) {
@@ -59,10 +63,8 @@ export default function SubdomainPage({ params }: { params: { subdomain: string 
   };
 
   useEffect(() => {
-    if (status === 'authenticated') {
       getDomain();
-    }
-  }, [status, subdomain]);
+  }, [subdomain]);
 
   useEffect(() => {
     if (domainDetails) {
@@ -71,7 +73,7 @@ export default function SubdomainPage({ params }: { params: { subdomain: string 
   }, [domainDetails]);
 
   if (status === 'loading') {
-    return <div className="text-center text-gray-500">Loading...</div>;
+    return <Loader/>
   }
 
   return (
@@ -90,3 +92,31 @@ export default function SubdomainPage({ params }: { params: { subdomain: string 
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+// 'use client'
+
+
+// import { useParams } from 'next/navigation';
+
+// export default function SubdomainPage() {
+//   const { subdomain } = useParams();
+
+//   console.log(subdomain)
+
+//   return (
+//     <div>
+//       <h1>Subdomain: {subdomain}</h1>
+//       <p>This is the content for the subdomain {subdomain}.</p>
+//     </div>
+//   );
+// }
