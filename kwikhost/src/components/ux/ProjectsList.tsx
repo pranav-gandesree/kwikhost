@@ -54,11 +54,13 @@ export default function ProjectsList({ userId }: { userId: string }) {
 
           {/* Domain Info */}
           <div >
-            <Link href={domain.domain} target="_blank">
-              <div className="text-sm font-medium text-white hover:underline">
-                {domain.domain}
-              </div>
-            </Link>
+            
+          <Link href={`https://${domain.domain}.localhost:3000`} target="_blank" rel="noopener noreferrer">
+            <span className="text-sm font-medium text-white hover:underline">
+              {domain.domain}.localhost:3000
+            </span>
+          </Link>
+
            
           </div>
 

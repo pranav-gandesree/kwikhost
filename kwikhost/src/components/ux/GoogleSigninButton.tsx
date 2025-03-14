@@ -15,8 +15,13 @@ const GoogleSignInButton: FC<GoogleSignInButtonProps> = ({children}) => {
     const loginWithGoogle = async () =>{
       try {
         setIsLoading(true)
-        // signIn("google", {callbackUrl: 'http://localhost:3000/manage'})
-        signIn("google", {callbackUrl: process.env.NEXT_PUBLIC_PRODUCTION_URL})
+        signIn("google", {callbackUrl: 'http://localhost:3000/manage',
+          // signIn("google", {callbackUrl: process.env.NEXT_PUBLIC_PRODUCTION_URL + '/manage',
+          redirect: true
+        }
+        )
+      
+      
       } catch (error) {
         console.log(error)
         setIsLoading(false)

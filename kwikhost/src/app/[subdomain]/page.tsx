@@ -38,10 +38,10 @@ export default function SubdomainPage({ params }: { params: { subdomain: string 
         const data = await GetDomainByName(subdomain);
         // const data = await GetDomains(session.user.id);
         setDomainDetails(data);
-        console.log('Subdomain', subdomain);
+        console.log('Subdomain in page.tsco', subdomain);
         // console.log('SubdomainPage: Fetched domain details:', data);
       }
-    } catch (error) {
+    } catch (error) { 
       console.error('Error fetching domain details:', error);
     }
   };

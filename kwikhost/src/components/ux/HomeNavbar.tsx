@@ -27,7 +27,7 @@ const HomeNavbar = () => {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <Image
-              src={session?.user?.image || '/default-image.png'}
+              src={session?.user?.image || ''}
               alt="User Profile"
               width={40}
               height={40}
