@@ -20,6 +20,7 @@ export default function ProjectsList({ userId }: { userId: string }) {
     const fetchDomains = async () => {
       try {
         const result = await GetDomains(userId);
+        /* eslint-disable @typescript-eslint/no-explicit-any */
         const formattedResult = result.map((domain: any) => ({
           ...domain,
           updatedAt: new Date(domain.updatedAt).toISOString().split('T')[0],
