@@ -36,10 +36,9 @@ export default function SubdomainPage({ params }: { params: { subdomain: string 
     try {
       if (subdomain && session?.user?.id) {
         const data = await GetDomainByName(subdomain);
-        // const data = await GetDomains(session.user.id);
         setDomainDetails(data);
         console.log('Subdomain in page.tsco', subdomain);
-        // console.log('SubdomainPage: Fetched domain details:', data);
+        console.log('SubdomainPage: Fetched domain details:', data);
       }
     } catch (error) { 
       console.error('Error fetching domain details:', error);
@@ -48,10 +47,11 @@ export default function SubdomainPage({ params }: { params: { subdomain: string 
 
   const getFiles = async () => {
     try {
-      if (domainDetails?.[0]?.id) {
+      if (domainDetails?.[0]?.id) {        
         const data = await GetFiles(domainDetails[0].id);
         setFileDetails(data);
-        // console.log('SubdomainPage: Fetched files:', data);
+        console.log("File URL:", fileDetails?.[0]?.file_url);
+        console.log('SubdomainPage: Fetched files:', data);
       }
     } catch (error) {
       console.error('Error fetching files:', error);

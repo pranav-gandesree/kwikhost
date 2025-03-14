@@ -111,6 +111,8 @@ export function FileS3({ fileKey, fileType }: { fileKey: string, fileType?: stri
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // console.log("filekey in s3file",fileKey)
+
   const isImage = fileType?.startsWith('image/') || 
     fileKey.match(/\.(jpeg|jpg|gif|png|webp|svg|bmp|tiff)$/i);
 
@@ -139,6 +141,7 @@ export function FileS3({ fileKey, fileType }: { fileKey: string, fileType?: stri
 
     fetchFile();
   }, [fileKey]);
+
 
   const handleDownload = async () => {
     if (!fileUrl) return;
