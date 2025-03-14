@@ -11,14 +11,21 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  
-
-  const isImage =
+    const isImage =
     fileType?.startsWith('image/') ||
     fileKey.match(/\.(jpeg|jpg|gif|png|webp|svg|bmp|tiff)$/i);
 
     
-  // const isPdf = fileType === 'application/pdf' || fileKey.endsWith('.pdf');
+  const isPdf = fileType === 'application/pdf' || fileKey.endsWith('.pdf');
+
+  const isPPT =
+    fileType === 'application/vnd.ms-powerpoint' || fileKey.endsWith('.ppt') ||
+    fileType === 'application/vnd.openxmlformats-officedocument.presentationml.presentation' ||
+    fileKey.endsWith('.pptx');
+
+  const isMp3 = fileType === 'audio/mpeg' || fileKey.endsWith('.mp3')
+
+  const isMp4 = fileType === 'video/mp4' || fileKey.endsWith('.mp4')
 
 
   useEffect(() => {
@@ -66,8 +73,10 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
 
   return (
     <div className="flex flex-col items-center gap-4 mt-4">
+
+
       {isImage && fileUrl && (
-        <div className="border border-gray-200 rounded-lg overflow-hidden shadow-md max-w-md">
+        <div className="overflow-hidden shadow-md max-w-md">
           <Image
             src={fileUrl}
             alt="File preview"
@@ -79,7 +88,55 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
         </div>
       )}
 
-      
+    
+{isPdf && fileUrl && (
+  <div className="flex justify-center items-center bg-gray-100 min-h-[80vh] ">
+    <div className="border-2 border-gray-300 shadow-lg rounded-lg overflow-hidden w-full">
+      <embed
+        src={fileUrl}
+        className="w-full md:w-[800px] h-[500px] md:h-[700px]"
+        title="PDF Viewer"
+      />
+
+    </div>
+  </div>
+)}
+
+
+{isPPT && fileUrl && (
+  <div className="flex justify-center items-center bg-gray-100 min-h-[80vh]">
+    <iframe
+      src={`https://docs.google.com/gview?url=${encodeURIComponent(fileUrl)}&embedded=true`}
+      className="w-full md:w-[800px] h-[500px] md:h-[700px] border-2 border-gray-300 shadow-lg rounded-lg"
+      title="PPT Viewer"
+    />
+  </div>
+)}
+
+{isMp3 && fileUrl && 
+(
+  <audio src={fileUrl} controls autoPlay></audio>
+
+)}
+
+
+
+
+{isMp4 && fileUrl && (
+  <div className="flex justify-center items-center min-h-screen bg-black">
+    <video
+      src={fileUrl}
+      controls
+      playsInline
+      crossOrigin="anonymous"
+      className="w-full md:w-[600px] lg:w-[800px] h-auto rounded-lg shadow-lg border-2 border-gray-700"
+    />
+  </div>
+)}
+
+
+
+
 
 </div>
         

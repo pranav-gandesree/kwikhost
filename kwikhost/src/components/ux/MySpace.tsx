@@ -20,6 +20,18 @@ const MySpace = () => {
 
   const handleFileUpload = async (file: File, subdomain: string) => {
     try {
+
+      if (!file) {
+        console.error("No file selected");
+        alert("Please select a file before uploading.");
+        return;
+      }
+  
+      if (!subdomain) {
+        console.error("No subdomain provided");
+        alert("Please enter a subdomain before uploading.");
+        return;
+      }
       
       const response = await axios.post("/api/upload", {
         userId: session.user.id,
