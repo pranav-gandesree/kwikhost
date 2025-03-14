@@ -13,7 +13,7 @@ export default async function NotFound() {
         height={400}
       />
       <p className="text-lg text-stone-500">
-                You've found a page that doesn't exist."
+               You&apos;ve found a page that doesn&apos;t exist
       </p>
     </div>
   );
