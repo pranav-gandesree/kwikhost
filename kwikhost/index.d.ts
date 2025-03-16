@@ -9,6 +9,8 @@ declare module 'next-auth' {
       email: string;
       name: string;
       image?: string;
+      projectLimit: Number,
+      projectCount?: Number
     } 
   }
 

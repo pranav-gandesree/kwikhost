@@ -15,8 +15,10 @@ interface Domain {
 
 export default function ProjectsList({ userId }: { userId: string }) {
   const [domains, setDomains] = useState<Domain[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     const fetchDomains = async () => {
       try {
         const result = await GetDomains(userId);
@@ -28,6 +30,8 @@ export default function ProjectsList({ userId }: { userId: string }) {
         setDomains(formattedResult);
       } catch (error) {
         console.error('Failed to fetch domains:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -52,49 +56,97 @@ export default function ProjectsList({ userId }: { userId: string }) {
     }
   };
 
-  return (
-    <div className="space-y-4">
-      {domains.map((domain) => (
-        <div
-          key={domain.id}
-          className="flex items-center gap-6 p-4 bg-zinc-900 border border-zinc-700 rounded-xl shadow-sm hover:shadow-md transition-all"
-        >
+    // <div className="space-y-4">
+    //   {domains.map((domain) => (
+    //     <div
+    //       key={domain.id}
+    //       className="flex items-center gap-6 p-4 bg-zinc-900 border border-zinc-700 rounded-xl shadow-sm hover:shadow-md transition-all"
+    //     >
           
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-            <Globe className="w-6 h-6 text-white" />
-          </div>
+    //       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+    //         <Globe className="w-6 h-6 text-white" />
+    //       </div>
 
           
-          <div className="flex-1">
-            <Link
-              href={`https://${domain.domain}.kwikhost.xyz`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg font-semibold text-white hover:text-purple-400 transition-colors"
-            >
-              {domain.domain}.kwikhost.xyz
-            </Link>
-            <p className="text-sm text-zinc-400 mt-1">
-               Last Modified - {domain.updatedAt}
-            </p>
-          </div>
+    //       <div className="flex-1">
+    //         <Link
+    //           href={`https://${domain.domain}.kwikhost.xyz`}
+    //           target="_blank"
+    //           rel="noopener noreferrer"
+    //           className="text-lg font-semibold text-white hover:text-purple-400 transition-colors"
+    //         >
+    //           {domain.domain}.kwikhost.xyz
+    //         </Link>
+    //         <p className="text-sm text-zinc-400 mt-1">
+    //            Last Modified - {domain.updatedAt}
+    //         </p>
+    //       </div>
 
           
-          <span className="text-sm text-green-400 bg-green-800/40 px-2 py-1 rounded-lg">
-            Active
-          </span>
+    //       <span className="text-sm text-green-400 bg-green-800/40 px-2 py-1 rounded-lg">
+    //         Active
+    //       </span>
 
          
-          <Button
-            size="icon"
-            variant="ghost"
-            className="h-10 w-10 flex items-center justify-center rounded-full hover:bg-zinc-800 transition-colors"
-            onClick={() => handleCopy(domain.domain)}
-          >
-            <FileText className="h-5 w-5 text-zinc-400 hover:text-white" />
-          </Button>
-        </div>
-      ))}
-    </div>
-  );
-}
+    //       <Button
+    //         size="icon"
+    //         variant="ghost"
+    //         className="h-10 w-10 flex items-center justify-center rounded-full hover:bg-zinc-800 transition-colors"
+    //         onClick={() => handleCopy(domain.domain)}
+    //       >
+    //         <FileText className="h-5 w-5 text-zinc-400 hover:text-white" />
+    //       </Button>
+    //     </div>
+    //   ))}
+    // </div>
+
+
+    return (
+      <div className="space-y-4">
+        {loading ? (
+          <p className="text-center text-zinc-400">Loading projects...</p>
+        ) : domains.length === 0 ? (
+          <p className="text-center text-zinc-400">No projects yet</p>
+        ) : (
+          domains.map((domain) => (
+            <div
+              key={domain.id}
+              className="flex items-center gap-6 p-4 bg-zinc-900 border border-zinc-700 rounded-xl shadow-sm hover:shadow-md transition-all"
+            >
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                <Globe className="w-6 h-6 text-white" />
+              </div>
+  
+              <div className="flex-1">
+                <Link
+                  href={`https://${domain.domain}.kwikhost.xyz`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-lg font-semibold text-white hover:text-purple-400 transition-colors"
+                >
+                  {domain.domain}.kwikhost.xyz
+                </Link>
+                <p className="text-sm text-zinc-400 mt-1">
+                  Last Modified - {domain.updatedAt}
+                </p>
+              </div>
+  
+              <span className="text-sm text-green-400 bg-green-800/40 px-2 py-1 rounded-lg">
+                Active
+              </span>
+  
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-10 w-10 flex items-center justify-center rounded-full hover:bg-zinc-800 transition-colors"
+                onClick={() => handleCopy(domain.domain)}
+              >
+                <FileText className="h-5 w-5 text-zinc-400 hover:text-white" />
+              </Button>
+            </div>
+          ))
+        )}
+      </div>
+    );
+  }
+

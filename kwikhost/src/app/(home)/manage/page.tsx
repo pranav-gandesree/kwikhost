@@ -2,18 +2,17 @@
 
 import { useSession } from 'next-auth/react';
 import React, { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import MySpace from '@/components/ux/MySpace';
 import Spinner from '@/components/ux/Spinner';
 
 const ManagePage = () => {
-  const router = useRouter();
   const { status, data: session } = useSession();
   
   useEffect(() => {
-    console.log('session', session);
+    // console.log('session', session);
     if (status === 'unauthenticated') {
-      router.push('/');
+      redirect("/")
     }
   }, [status, session]);
 

@@ -16,12 +16,14 @@ export const user = pgTable("user", {
   email: text("email").unique(),
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
+  projectLimit: integer("project_limit").default(2), 
+  projectCount: integer("project_count").default(0), 
 });
 
 
 export const domain = pgTable("domain", {
   id: text("id").primaryKey().$defaultFn(() => crypto.randomUUID()),
-  domain: text("domain").notNull().unique(), // Keep column name consistent with schema
+  domain: text("domain").notNull().unique(), 
   userId: text("userId")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),

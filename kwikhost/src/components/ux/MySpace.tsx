@@ -8,10 +8,14 @@ import axios from 'axios';
 import { useSession } from 'next-auth/react';
 import ProjectsList from './ProjectsList';
 import { Upload } from 'lucide-react';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const MySpace = () => {
   const [open, setOpen] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter();
+
 
   if (!session?.user?.id) {
     console.error("User is not authenticated");
@@ -45,11 +49,21 @@ const MySpace = () => {
         },
       });
 
-      console.log("File uploaded successfully");
+      // console.log("File uploaded successfully");
+      toast.success('File uploaded successfully!');
+      router.refresh();
+      
+      setOpen(false);
+
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
      catch (error: any) {
       console.error("File upload failed:", error.response?.data || error.message);
+      // toast.error(error.response?.data?.message || error.message);
+      const errorMessage =
+      error.response?.data?.error || "Failed to upload file";
+    toast.error(errorMessage);
+  
     }
   };
 
