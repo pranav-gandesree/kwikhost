@@ -162,7 +162,7 @@ export async function DELETE(request: Request) {
     await s3Client.send(command);
     console.log(`File deleted successfully from S3: ${fileKey}`);
 
-    // 🗑️ Step 2: Delete domain from database
+    //  delete domain from database
     await DeleteDomainById(domainId);
     console.log(`Domain deleted successfully from database: ${domainId}`);
 
@@ -170,9 +170,10 @@ export async function DELETE(request: Request) {
     
   } catch (error) {
     console.error("Error deleting the file:", error);
-    return { url: null, error: 'Failed to delete the file' };
+    return NextResponse.json(
+      { error: 'Failed to delete the file' },
+      { status: 500 }
+    );;
   }
-
-
 
 }
