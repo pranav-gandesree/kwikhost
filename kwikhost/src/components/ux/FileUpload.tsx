@@ -33,15 +33,19 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       'image/jpg',
       'image/png',
       'image/gif',
+      'image/webp',
       'image/svg+xml',
       'text/plain',
       'application/vnd.ms-powerpoint',
+      'application/vnd.ms-excel',
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
       'application/vnd.openxmlformats-officedocument.presentationml.presentation',
       'application/msword',
       'application/json',
       'text/html',
       'video/mp4',
-      'audio/mpeg',
+      'video/mpeg',
+      'audio/mpeg', // audio mp3 files
       'application/x-zip-compressed',
       'application/zip'
     ];

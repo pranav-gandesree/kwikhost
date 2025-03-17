@@ -4,8 +4,10 @@
 
 import { useSession, signOut } from 'next-auth/react';
 import React, { useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { ChevronDown, ChevronUp, Upload } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 
 const HomeNavbar = () => {
   const { data: session } = useSession();
@@ -32,13 +34,19 @@ const HomeNavbar = () => {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
-            <Image
+            {/* <Image
               src={session?.user?.image || ''}
               alt="User Profile"
               width={40}
               height={40}
               className="rounded-full border border-zinc-700 shadow-md"
-            />
+            /> */}
+
+            <Avatar>
+              <AvatarImage src={session?.user?.image || ''} />
+              <AvatarFallback>{session?.user?.name}</AvatarFallback>
+            </Avatar>
+
             {isDropdownOpen ? (
               <ChevronUp className="text-zinc-500" />
             ) : (

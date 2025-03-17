@@ -32,7 +32,7 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
     const fetchFile = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/getfiles?fileKey=${encodeURIComponent(fileKey)}`);
+        const response = await fetch(`/api/files?fileKey=${encodeURIComponent(fileKey)}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch file: ${response.statusText}`);
         }
@@ -113,11 +113,14 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
   </div>
 )}
 
+
 {isMp3 && fileUrl && 
 (
   <audio src={fileUrl} controls autoPlay></audio>
 
 )}
+
+
 
 
 
@@ -129,12 +132,12 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
       controls
       playsInline
       crossOrigin="anonymous"
-      className="w-full md:w-[600px] lg:w-[800px] h-auto rounded-lg shadow-lg border-2 border-gray-700"
+      className="
+        w-full h-screen max-w-[90vw] max-h-[90vh] 
+        object-contain rounded-lg shadow-lg border-2 border-gray-700"
     />
   </div>
 )}
-
-
 
 
 

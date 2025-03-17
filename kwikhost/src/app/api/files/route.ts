@@ -1,6 +1,8 @@
+'use server'
 
 import { NextRequest, NextResponse } from 'next/server';
 import { generateDownloadUrl } from '@/lib/generateDownloadUrl';
+
 
 // GET handler - Returns a signed URL for client-side download
 export async function GET(request: NextRequest) {
@@ -21,6 +23,8 @@ export async function GET(request: NextRequest) {
   
   return NextResponse.json({ url });
 }
+
+
 
 
 

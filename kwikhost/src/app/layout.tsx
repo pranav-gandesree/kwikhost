@@ -17,7 +17,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "kwikhost",
-  description: "Host your static site with kwikhost",
+  description: "Host your static files with kwikhost",
 };
 
 export default function RootLayout({

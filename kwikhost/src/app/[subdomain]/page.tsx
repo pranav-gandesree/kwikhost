@@ -85,7 +85,8 @@ export default function SubdomainPage() {
           fileType={fileDetails[0].file_type} 
         />
       ) : (
-        <p className="text-gray-500 mt-4">No file available for download.</p>
+        <Loader />
+        // <p className="text-gray-500 mt-4">No file available for download.</p>
       )}
 
 
