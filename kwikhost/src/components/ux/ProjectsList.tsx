@@ -41,6 +41,7 @@ export default function ProjectsList({ userId }: { userId: string }) {
        
         const formattedResult = JSON.parse(
           JSON.stringify(
+            /* eslint-disable @typescript-eslint/no-explicit-any */
             result.map((domain: any) => ({
               ...domain,
               updatedAt: new Date(domain.updatedAt).toISOString().split('T')[0],
