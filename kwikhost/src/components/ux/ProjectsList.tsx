@@ -15,6 +15,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuItem
 } from '@/components/ui/dropdown-menu';
+import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog';
+
+// import { EditFileUpload } from './EditFileUpload';
 
 
 interface Domain {
@@ -26,6 +29,7 @@ interface Domain {
 export default function ProjectsList({ userId }: { userId: string }) {
   const [domains, setDomains] = useState<Domain[]>([]);
   const [loading, setLoading] = useState(true);
+  const [open, setOpen] = useState(false);
 
   // useEffect(() => {
   //   console.log("domains is", domains);
@@ -165,10 +169,13 @@ export default function ProjectsList({ userId }: { userId: string }) {
                   <DropdownMenuContent align="end" className="w-48">
                     <DropdownMenuLabel>Manage Project</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>Edit Project</DropdownMenuItem>
-                    <DropdownMenuItem>View Analytics</DropdownMenuItem>
-                    <DropdownMenuItem>Custom Domain</DropdownMenuItem>
-                    <DropdownMenuItem className="text-red-500">Delete Project</DropdownMenuItem>
+
+
+                    <DropdownMenuItem >Replace Existing File</DropdownMenuItem>
+
+
+                    {/* <DropdownMenuItem>Custom Domain</DropdownMenuItem> */}
+                    <DropdownMenuItem className="text-red-500 cursor-pointer" onClick={() => deleteProject(domain.id, domain.domain)}>Delete Project</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
@@ -200,8 +207,16 @@ export default function ProjectsList({ userId }: { userId: string }) {
                 <DropdownMenuContent align="end" className="w-56">
                   <DropdownMenuLabel>Manage Project</DropdownMenuLabel>
                   <DropdownMenuSeparator />
+                  <Dialog open={open} onOpenChange={setOpen}>
+                     <DialogTrigger asChild>
+                      <DropdownMenuItem className='cursor-pointer'>Replace Existing File</DropdownMenuItem>
+                      </DialogTrigger>
+                       <DialogContent className="max-w-lg bg-zinc-800 border border-zinc-700 rounded-xl shadow-lg">
+                                  {/* <EditFileUpload domainName={domain.domain} /> */}
+                      </DialogContent>
+                  </Dialog>
+
                   {/* <DropdownMenuItem>Edit Project</DropdownMenuItem> */}
-                  <DropdownMenuItem className='cursor-pointer'>Replace Existing File</DropdownMenuItem>
                   <DropdownMenuItem className="text-red-500 cursor-pointer" onClick={() => deleteProject(domain.id, domain.domain)}>Delete Project</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

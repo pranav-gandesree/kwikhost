@@ -5,6 +5,8 @@ import { FileText, ImageIcon, FileIcon, Upload, Globe, Share2 } from "lucide-rea
 import Link from "next/link"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import files from "../../public/files.svg"
+import Image from "next/image"
 
 export default function LandingPage() {
   const {data:session} = useSession();
@@ -34,18 +36,19 @@ export default function LandingPage() {
           </div>
           <span className="font-bold text-xl tracking-tight">kwikhost</span>
         </div>
-        {/* <div className="hidden md:flex items-center gap-8">
-          <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
+        <div className="hidden md:flex items-center gap-8">
+          <Link href="/features" className="text-sm text-zinc-400 hover:text-white transition-colors">
             Features
           </Link>
-          <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
+          {/* <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
             Pricing
-          </Link>
+          </Link> */}
           
-        </div> */}
+        </div> 
         <div className="flex items-center gap-4">
 
-              <div className="w-full">
+              <div className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium py-2 px-4 rounded-lg shadow-md transition duration-300"
+              >
                 <Link href="/login">
                   Sign in with Google
                 </Link>
@@ -266,16 +269,16 @@ export default function LandingPage() {
               </div>
             </div>
             <div className="md:w-1/2 relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl"></div>
+              {/* <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl"></div> */}
               <div className="relative">
-                {/* <Image
-                  src="/placeholder.svg?height=400&width=500"
+                <Image
+                  src={files}
                   width={500}
                   height={400}
                   alt="File types showcase"
                   className="rounded-3xl border border-zinc-800 shadow-2xl"
-                /> */}
-                <div className="absolute -bottom-6 -right-6 bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-2xl p-4 shadow-xl">
+                />
+                {/* <div className="absolute -bottom-6 -right-6 bg-zinc-900/80 backdrop-blur-sm border border-zinc-800 rounded-2xl p-4 shadow-xl">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold">
                       ∞
@@ -285,538 +288,19 @@ export default function LandingPage() {
                       <div className="text-xs text-zinc-400">Host anything you need</div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works - Timeline Style */}
-      {/* <section className="relative z-10 py-24">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-pink-900/10 transform skew-y-6"></div>
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              How it{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">works</span>
-            </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto">
-              Get started in minutes with our simple three-step process.
-            </p>
-          </div>
-
-          <div className="relative">
-            
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-500 hidden md:block"></div>
-
-            <div className="space-y-24 relative">
-              
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold mb-4">Create your space</h3>
-                  <p className="text-zinc-400">
-                    Sign up and choose your custom subdomain (you.kwikhost.xyz) in just a few seconds.
-                  </p>
-                </div>
-                <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-xl font-bold mb-8 md:mb-0">
-                  1
-                </div>
-                <div className="md:w-1/2 md:pl-12">
-                  <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-4 shadow-xl">
-                    <Image
-                      src="/placeholder.svg?height=200&width=300"
-                      width={300}
-                      height={200}
-                      alt="Create account"
-                      className="rounded-xl w-full"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 md:pr-12 order-2 md:order-1">
-                  <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-4 shadow-xl">
-                    <Image
-                      src="/placeholder.svg?height=200&width=300"
-                      width={300}
-                      height={200}
-                      alt="Upload files"
-                      className="rounded-xl w-full"
-                    />
-                  </div>
-                </div>
-                <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-xl font-bold mb-8 md:mb-0 order-1 md:order-2">
-                  2
-                </div>
-                <div className="md:w-1/2 md:pl-12 md:text-left mb-8 md:mb-0 order-3">
-                  <h3 className="text-2xl font-bold mb-4">Upload your files</h3>
-                  <p className="text-zinc-400">
-                    Drag and drop your files or use our file picker to upload your content.
-                  </p>
-                </div>
-              </div>
-
-             
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 md:pr-12 md:text-right mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold mb-4">Share with the world</h3>
-                  <p className="text-zinc-400">Get your shareable link instantly and share it with anyone you want.</p>
-                </div>
-                <div className="md:absolute md:left-1/2 md:transform md:-translate-x-1/2 z-10 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center text-xl font-bold mb-8 md:mb-0">
-                  3
-                </div>
-                <div className="md:w-1/2 md:pl-12">
-                  <div className="bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-2xl p-4 shadow-xl">
-                    <Image
-                      src="/placeholder.svg?height=200&width=300"
-                      width={300}
-                      height={200}
-                      alt="Share files"
-                      className="rounded-xl w-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* Pricing Section - Creative Cards */}
-      {/* <section className="relative z-10 py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Simple,{" "}
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                transparent
-              </span>{" "}
-              pricing
-            </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto"> Choose the plan that&apos;s right for you.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 transition-all duration-300 group-hover:border-purple-500/50 group-hover:transform group-hover:-translate-y-1">
-                <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 w-24 h-24 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-xl"></div>
-                <h3 className="text-2xl font-bold mb-2">Free</h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold">$0</span>
-                  <span className="text-zinc-400">/month</span>
-                </div>
-                <p className="text-zinc-400 mb-6">Perfect for personal use</p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>100MB storage</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>Custom subdomain</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>Basic file types</span>
-                  </li>
-                </ul>
-                <Button
-                  variant="outline"
-                  className="w-full border-zinc-700 hover:bg-zinc-800 hover:border-purple-500/50"
-                >
-                  Get Started
-                </Button>
-              </div>
-            </div>
-
-            
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-3xl blur-xl"></div>
-              <div className="relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-8 transform translate-y-0 transition-all duration-300 group-hover:transform group-hover:-translate-y-1">
-                <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 w-24 h-24 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-xl"></div>
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  POPULAR
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Pro</h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold">$9</span>
-                  <span className="text-zinc-400">/month</span>
-                </div>
-                <p className="text-zinc-400 mb-6">For professionals</p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>10GB storage</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>Custom domain</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>All file types</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>Analytics</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-white text-purple-600 hover:bg-zinc-100">Get Started</Button>
-              </div>
-            </div>
-
-          
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 rounded-3xl p-8 transition-all duration-300 group-hover:border-purple-500/50 group-hover:transform group-hover:-translate-y-1">
-                <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4 w-24 h-24 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-xl"></div>
-                <h3 className="text-2xl font-bold mb-2">Business</h3>
-                <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold">$29</span>
-                  <span className="text-zinc-400">/month</span>
-                </div>
-                <p className="text-zinc-400 mb-6">For teams and businesses</p>
-                <ul className="space-y-4 mb-8">
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>100GB storage</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>Multiple custom domains</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>Team collaboration</span>
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M10 3L4.5 8.5L2 6"
-                          stroke="white"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                    <span>Priority support</span>
-                  </li>
-                </ul>
-                <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0">
-                  Get Started
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* CTA Section */}
-      {/* <section className="relative z-10 py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-3xl blur-xl"></div>
-            <div className="relative bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-12 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to get started with kwikhost?</h2>
-              <p className="text-zinc-300 mb-8 max-w-2xl mx-auto">
-                Join thousands of creators who trust kwikhost for their file hosting needs. Get your own corner of the
-                web today.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-white text-purple-600 hover:bg-zinc-100 h-12 px-8 rounded-xl">
-                  Start for free
-                </Button>
-                <Button variant="outline" className="border-white/30 text-white hover:bg-white/10 h-12 px-8 rounded-xl">
-                  Contact sales
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      {/* <PricingCards/> */}
 
       {/* Footer */}
-      {/* <footer className="relative z-10 border-t border-zinc-800 py-12 px-6">
-        <div className="max-w-7xl mx-auto">
-
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="relative w-8 h-8">
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg transform rotate-45"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Upload className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-                <span className="font-bold text-xl tracking-tight">kwikhost</span>
-              </div>
-              <p className="text-zinc-400 text-sm">
-                Simple file hosting with custom domains. Upload, share, and manage your files with ease.
-              </p>
-            </div>
-            <div>
-              <h4 className="font-medium mb-4">Product</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Features
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Custom Domains
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    File Types
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-medium mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-medium mb-4">Resources</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Documentation
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Help Center
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    API
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Status
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-medium mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    Cookie Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">
-                    GDPR
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="mt-12 pt-6 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-zinc-400">© {new Date().getFullYear()} kwikhost. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="text-zinc-400 hover:text-white transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                </svg>
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-white transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect width="4" height="12" x="2" y="9"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </Link>
-              <Link href="#" className="text-zinc-400 hover:text-white transition-colors">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M12 2H2v10h10V2zM22 2h-10v10h10V2zM12 12H2v10h10V12zM22 12h-10v10h10V12z"></path>
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer> */}
+      {/* <Footer/> */}
     </div>
   )
 }

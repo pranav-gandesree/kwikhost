@@ -12,12 +12,15 @@ interface FileUploadProps {
   onFileUpload?: (file: File, subdomain: string) => void;
 }
 
-export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
+export const FileUpload: React.FC<FileUploadProps> = ({
+   onFileUpload,
+  }) => {
   const [preview, setPreview] = useState<string | null>(null);
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle');
   const [fileName, setFileName] = useState<string | null>(null);
   const [subdomain, setSubdomain] = useState<string>('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
@@ -95,6 +98,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
   };
 
   return (
+
     <div className="w-full max-w-lg mx-auto p-4 bg-black rounded-lg shadow-xl">
       {/* Subdomain Input */}
       <div className="flex items-center mb-4">
@@ -111,7 +115,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
       </div>
 
 
-      {fileName && (
+      {/* {fileName && (
         <div className="mb-2 flex items-center justify-center text-sm text-gray-400">
           Uploaded file: 
           <span className="font-medium text-white ml-1">{fileName}</span>
@@ -122,7 +126,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
             <X className="w-4 h-4" />
           </button>
         </div>
-      )}
+      )} */}
 
       {/* Dropzone */}
       <div
@@ -168,7 +172,7 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         {/* Preview */}
         {preview && uploadStatus !== 'success' && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/90 rounded-xl animate-fade-in">
-            <Image src={preview} alt="Preview" className="max-h-[80%] max-w-[80%] object-contain rounded" />
+            <Image src={preview} alt="Preview" className="max-h-[80%] max-w-[80%] object-contain rounded" width="100" height="100"/>
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -195,5 +199,6 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onFileUpload }) => {
         {uploadStatus === 'uploading' ? 'Publishing...' : 'PUBLISH'}
       </button>
     </div>
+
   );
 };

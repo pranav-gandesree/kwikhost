@@ -4,9 +4,9 @@
 
 import { useSession, signOut } from 'next-auth/react';
 import React, { useState } from 'react';
-// import Image from 'next/image';
 import { ChevronDown, ChevronUp, Upload } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Badge } from '../ui/badge';
 
 
 const HomeNavbar = () => {
@@ -27,20 +27,16 @@ const HomeNavbar = () => {
         </div>
 
       <ul className="flex flex-row gap-6 items-center text-base font-medium text-zinc-400">
-
+        
+      <li>
+        <Badge variant="secondary" className='text-md'>Free Plan</Badge></li>
+        
        
         <li className="relative">
           <div
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
-            {/* <Image
-              src={session?.user?.image || ''}
-              alt="User Profile"
-              width={40}
-              height={40}
-              className="rounded-full border border-zinc-700 shadow-md"
-            /> */}
 
             <Avatar>
               <AvatarImage src={session?.user?.image || ''} />
@@ -52,6 +48,7 @@ const HomeNavbar = () => {
             ) : (
               <ChevronDown className="text-zinc-500" />
             )}
+
           </div>
 
           {isDropdownOpen && (
@@ -67,6 +64,7 @@ const HomeNavbar = () => {
             </ul>
           )}
         </li>
+
       </ul>
     </div>
   );
