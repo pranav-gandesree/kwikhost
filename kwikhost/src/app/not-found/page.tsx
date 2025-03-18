@@ -59,7 +59,7 @@ const LostInSpace = () => {
           File Lost in Space!
         </h2>
         <p className="text-zinc-400 mt-2">
-          We couldn't locate your file. It might be drifting in the void...
+        We couldn&apos;t locate your file. It might be drifting in the void...
         </p>
 
         {/* Return Button */}
