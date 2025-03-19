@@ -13,6 +13,26 @@ import { s3Client, BUCKET_NAME } from "../../../lib/s3"
 import { DeleteDomainById } from '@/actions/deleteProject';
 
 
+async function getProjectLimits(userId: string) {
+  const result = await db
+    .select({
+      projectLimit: user.projectLimit,
+      projectCount: user.projectCount
+    })
+    .from(user)
+    .where(eq(user.id, userId));
+
+  if (result.length === 0) {
+    throw new Error("User not found");
+  }
+
+  return result[0]; // Returns { projectLimit, projectCount }
+}
+
+
+
+
+
 export async function POST(req: Request, res: Response) {
   const session = await getServerSession({ req, res, ...authOptions })
 
@@ -46,7 +66,7 @@ export async function POST(req: Request, res: Response) {
         return NextResponse.json({ error: "User not found" }, { status: 404 });
       }
 
-      const { projectLimit, projectCount } = result[0];
+      const { projectLimit, projectCount } = await getProjectLimits(userId);
 
       if (projectLimit !== null  && (projectCount ?? 0) >= projectLimit) {
         return NextResponse.json(
@@ -144,10 +164,11 @@ export async function DELETE(request: Request) {
   const { searchParams } = new URL(request.url);
   const fileKey = searchParams.get('fileKey');
   const domainId = searchParams.get('domainId');
+  const userId = searchParams.get('userId')
 
-  if (!fileKey || !domainId) {
+  if (!fileKey || !domainId || !userId) {
     return NextResponse.json(
-      { error: 'Missing fileKey or domainId parameter' },
+      { error: 'Missing fileKey or domainId parameter or userId' },
       { status: 400 }
     );
   }
@@ -165,6 +186,18 @@ export async function DELETE(request: Request) {
     //  delete domain from database
     await DeleteDomainById(domainId);
     console.log(`Domain deleted successfully from database: ${domainId}`);
+
+    const { projectCount } = await getProjectLimits(userId);
+
+    await db
+    .update(user)
+    .set({
+      projectCount: (projectCount ?? 0) - 1
+    })
+    .where(eq(user.id, userId));
+
+
+
 
     return NextResponse.json({ success: true });
     

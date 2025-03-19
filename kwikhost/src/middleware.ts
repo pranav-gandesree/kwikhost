@@ -106,7 +106,7 @@ export async function middleware(req: NextRequest) {
 
   // **NEW CHECK**: Block path-based access on the main domain unless it's explicitly allowed
   if (isMainDomain) {
-    const allowedPaths = ['/', '/manage', '/login', '/not-found', '/features' ]; // define allowed paths on the main domain
+    const allowedPaths = ['/', '/manage', '/login', '/not-found', '/features', '/notion' ]; // define allowed paths on the main domain
     if (!allowedPaths.includes(url.pathname)) {
       return NextResponse.rewrite(new URL('/not-found', req.url));
     }
