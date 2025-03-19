@@ -81,10 +81,10 @@ export default function ProjectsList({ userId }: { userId: string }) {
     }
   };
 
-  const deleteProject =  async (domainId: string, fileKey: string) => {
+  const deleteProject =  async (domainId: string, fileKey: string, userId: string) => {
 
     try{
-      const res = await fetch(`/api/upload?fileKey=${fileKey}&domainId=${domainId}`, {
+      const res = await fetch(`/api/upload?fileKey=${fileKey}&domainId=${domainId}&userId=${userId}`, {
         method: 'DELETE',
       });
       const data = await res.json();
@@ -175,7 +175,7 @@ export default function ProjectsList({ userId }: { userId: string }) {
 
 
                     {/* <DropdownMenuItem>Custom Domain</DropdownMenuItem> */}
-                    <DropdownMenuItem className="text-red-500 cursor-pointer" onClick={() => deleteProject(domain.id, domain.domain)}>Delete Project</DropdownMenuItem>
+                    <DropdownMenuItem className="text-red-500 cursor-pointer" onClick={() => deleteProject(domain.id, domain.domain, userId)}>Delete Project</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
@@ -217,7 +217,7 @@ export default function ProjectsList({ userId }: { userId: string }) {
                   </Dialog>
 
                   {/* <DropdownMenuItem>Edit Project</DropdownMenuItem> */}
-                  <DropdownMenuItem className="text-red-500 cursor-pointer" onClick={() => deleteProject(domain.id, domain.domain)}>Delete Project</DropdownMenuItem>
+                  <DropdownMenuItem className="text-red-500 cursor-pointer" onClick={() => deleteProject(domain.id, domain.domain, userId)}>Delete Project</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>

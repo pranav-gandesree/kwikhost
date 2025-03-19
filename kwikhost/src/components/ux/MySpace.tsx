@@ -36,6 +36,8 @@ const MySpace = () => {
         alert("Please enter a subdomain before uploading.");
         return;
       }
+
+      subdomain = subdomain.toLowerCase();
       
       const response = await axios.post("/api/upload", {
         userId: session.user.id,
