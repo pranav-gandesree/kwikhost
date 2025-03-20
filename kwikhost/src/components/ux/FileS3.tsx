@@ -4,6 +4,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Loader from './Loader';
+import STLViewer from './STLViewer';
 
 
 export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: string }) {
@@ -27,6 +28,8 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
 
   const isMp4 = fileType === 'video/mp4' || fileKey.endsWith('.mp4')
 
+  const isSTL = fileType === 'model/stl' || fileKey.endsWith('.stl')
+
 
   useEffect(() => {
     const fetchFile = async () => {
@@ -42,7 +45,7 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
 
         if (data.url) {
           setFileUrl(data.url);
-          // console.log("file url in filses3 ", data.url)
+          console.log("file url in filses3 ", data.url)
         } else {
           throw new Error('No URL returned from the server');
         }
@@ -121,10 +124,6 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
 )}
 
 
-
-
-
-
 {isMp4 && fileUrl && (
   <div className="flex justify-center items-center min-h-screen bg-black">
     <video
@@ -138,6 +137,16 @@ export function FileS3({ fileKey, fileType }: { fileKey: string; fileType?: stri
     />
   </div>
 )}
+
+
+{isSTL && fileUrl && (
+  <div className='border border-gray-500'>
+    <STLViewer url={fileUrl}/>
+  </div>
+)} 
+
+
+
 
 
 
