@@ -50,7 +50,11 @@ export const FileUpload: React.FC<FileUploadProps> = ({
       'video/mpeg',
       'audio/mpeg', // audio mp3 files
       'application/x-zip-compressed',
-      'application/zip'
+      'application/zip',
+      'model/stl', // .stl files
+      'application/x-blender', // .blend files
+      'application/sla',
+      'model/vnd.blender'
     ];
 
     if (!validTypes.includes(file.type)) {

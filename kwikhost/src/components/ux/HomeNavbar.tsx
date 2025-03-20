@@ -35,7 +35,7 @@ const HomeNavbar = () => {
           </div>
           <span className="font-bold text-xl tracking-tight">kwikhost</span>
 
-          <NavigationMenuDemo/>
+          {/* <NavigationMenuDemo/> */}
 
      
         </div>
