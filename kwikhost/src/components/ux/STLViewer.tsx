@@ -29,7 +29,7 @@ const STLViewer = ({ url }: { url: string }) => {
     }
 
     
-    var controls = new OrbitControls( camera, renderer.domElement );
+    const controls = new OrbitControls( camera, renderer.domElement );
 
     controls.enableDamping = true;
     controls.rotateSpeed = 1;
